@@ -1,0 +1,60 @@
+#include<stdio.h>
+int main()
+{
+	int i,j,a[100],n,sum,temp,max=0,mode,c;
+    float mean,median;
+	printf("Enter the number of elements in the array\n");
+	scanf("%d",&n);
+	printf("Enter the elements of the array\n");
+	for(i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<n;i++){
+		sum=sum+a[i];
+	}
+	mean=(sum/n);
+	printf("Mean of given data : %f\n",mean);	
+ 	for(i=0;i<n;i++)
+  	{
+  		for(j=0;j<n-i-1;j++)
+   		{
+   			if(a[j]>a[j+1])
+    			{
+    				temp=a[j];
+    				a[j]=a[j+1];
+    				a[j+1]=temp;
+    			}
+   		}
+  	}
+  	if(n%2==0)
+  		median=(float)(a[n/2]+a[(n-1)/2]);
+  	else
+  		median=a[(n-1)/2];	
+  	printf("Median of the given data : %f\n",median);
+  	for(i=0;i<n-1;i++)
+  	{
+  		mode=0;
+  		for(j=i+1;j<n;j++)
+   		{
+   			if(a[i]==a[j])
+   				mode++;
+        }
+  		if((mode>=max)&&(mode!=0))
+   		{
+   			
+   			max=mode;
+   			c=a[i];
+        
+   			
+   		}
+
+  		
+  	}
+    
+ 	 	
+    
+  		printf("Mode of the given data = ");
+               
+          		printf("%d ",c);
+          	  	return 0;
+ }
