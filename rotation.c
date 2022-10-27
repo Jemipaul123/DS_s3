@@ -1,6 +1,7 @@
 #include<stdio.h>
 int rotate(int a[],int n,char d,int cr)
 {
+	
     	int last;int first;
 	if(d=='r')
 	{
