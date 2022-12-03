@@ -29,14 +29,14 @@ int main()
     
     printf("\nPolynomial 1  = %dx^%d", p1[0].coeff,p1[0].expo);
     for (int i = 1; i < size1; i++)
-        printf("+ %dx^%d", p1[i].coeff, p1[i].expo);
+        printf("+ %dx^%d", p1[i].coeff, p1[i].expo);//we print the first polynomial outside the loop inorder to avoid the extra + sign
     printf("\nPolynomial 2  = %dx^%d", p2[0].coeff,p2[0].expo);
     for (int i = 1; i < size2; i++)
         printf("+%dx^%d ", p2[i].coeff, p2[i].expo);
     printf("\n");
     
 
-    int i = 0, j = 0, z = 0;
+    int i = 0, j = 0, z = 0;//i-iteration through poly 1, j- thru poly 2 and k thru sum poly
     while (i < size1 && j < size2)
     {
         if (p1[i].expo > p2[j].expo)
