@@ -1,3 +1,4 @@
+//ADD AT FRONT, BACK AND AT ANY POSITION
 #include<stdio.h>
 #include<stdlib.h>
 struct node{
