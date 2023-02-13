@@ -18,7 +18,7 @@ int isEmpty()
 
 void push(int data){
     struct node* newNode;
-    newNode =malloc(sizeof(newNode));
+    newNode =malloc(sizeof( struct newNode));
     if(newNode == NULL)
     {
         printf("Stack overflow");
