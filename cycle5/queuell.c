@@ -1,88 +1,106 @@
-//not correct
 #include<stdio.h>
+#include<stdlib.h>
+
 struct node{
-int data;
-struct node*link;
+    int data;
+    struct node*next;
 };
-struct node *front=NULL, node *rear=NULL;
 
-void Enqueue()
-{struct node*newnode;
-newnode=newnode malloc(sizeof(newnode));
-newnode->data= item;
-newnode->link=NULL;
+struct node *front =NULL, *rear=NULL;
 
-if(front==NULL)
+void enqueue(int data)
 {
-front=rear=newnode;
-}
-else
-{
-rear->next=newnode;
-rear=newnode;
-}
-}
-
-void Dequeue()
-{
-if(front==NULL)
-printf("the queue is empty");
- 
-else if(front==rear)
-temp=front;
-front=rear=NULL;
-free(temp);
+     struct node* newNode = (struct node*)malloc((sizeof(struct node)));
+      newNode->next = NULL;
+    newNode->data = data;
+    if(rear == NULL)
+    {
+		front = newNode;
+		rear  = newNode;
+    }
+    else
+    {
+		rear->next = newNode;
+		rear = newNode;
+    }
+    printf("enqueued: %d\n", data);
 }
 
+
+void pop()
+{
+    
+    if(front == NULL)
+    {
+        printf("\n Queue Empty\n");
+    }
+    else
+    {
+    	printf("dequeued: %d\n", front->data);
+    	struct node* temp = front;
+    	front = front->next;
+    	free(temp);
+    	if(front == NULL)
+    		rear = NULL;
+    }
+}
+void peek()
+{
+    if(front == NULL)
+        printf("\n Queue Empty");
+    else
+    {
+        printf("\n Front: %d", front->data);
+    }
+    printf("\n");
+}
 void display()
+{ struct node* temp=front;
+    if(front ==NULL)
+    {
+        printf("queue is empty");
+    }
+    else{
+        while(temp->next !=NULL)
+        {printf("%d\t",temp->data);
+        temp=temp->next;
+    }
+}}
+int main()
 {
-if(front==NULL)
-printf("the queue is empty");
-else
-struct node*ptr;
-ptr=front;
-while(ptr!=NULL)
-printf("%d",ptr->data)
-ptr= ptr->next;
-
-int main(){
-int choice;int element;
-while(1)
-{       printf("\n\nChoose operation");
-        printf("\n1.Enqueue");
-        printf("\n2.Dequeue");
-        printf("\n3.Display queue");
-        printf("\n4.Display Front Element");
-        printf("\n5.Exit\n");
-        scanf("%d", &ch);
-        switch(ch){
-        
-        case 1:
-        printf("Enter the element");
-        scanf("%d",&element);
-        enqueue(element);
-        break;
-        
-        case2:
-        dequeue;
-        break;
-        
-        case3:
-        display();
-        break;
-        
-        case4:
-       
-	        if(front == -1)
-	        {
-	        	printf("Queue Empty!");
-	        }
-	        else
-	        {
-                printf("Front element: %d", peek());
-	        }
-            break;
-        
-        default:
-        printf("you have entered the wrong option");
-        }
+    int choice;
+    do
+    {
+        int data;
+        printf("1: Enqueue\n");
+        printf("2: Peek\n");
+        printf("3: Dequeue\n");
+        printf("4: Display\n");
+        printf("5: Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+                printf("Enter value: ");
+                scanf("%d",&data);
+                enqueue(data);
+                break;
+            case 2:
+                peek();
+                break;
+            case 3:
+                dequeue();
+                break;
+            case 4:
+            display();
+                break;
+                case 5:
+                break;
+            default:
+                printf("Invalid Choice\n");
+                break;
+        };
+    }while(choice != 4);
+    return 0;
+}
